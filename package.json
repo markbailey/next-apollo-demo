@@ -1,0 +1,25 @@
+{
+  "name": "next-apollo-demo",
+  "version": "1.0.0",
+  "description": "Simple Next.js example with Apollo",
+  "scripts": {
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "cd server && ts-node",
+    "client": "cd client && npm run dev",
+    "setup": "npm i && cd server && npm i && cd ../client && npm i"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/markbailey/next-apollo-demo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/markbailey/next-apollo-demo/issues"
+  },
+  "homepage": "https://github.com/markbailey/next-apollo-demo#readme",
+  "devDependencies": {
+    "concurrently": "^7.6.0"
+  }
+}
