@@ -7,17 +7,17 @@ import PhoneIcon from './icons/Phone';
 import css from '../styles/card.module.css';
 
 type CardImageProps = Contact & ImgHTMLAttributes<HTMLImageElement>;
-type CardProps = Contact & HTMLAttributes<HTMLDivElement>;
+export type CardProps = Contact & HTMLAttributes<HTMLDivElement>;
 
 function CardImage(props: CardImageProps) {
   const { email, full_name, gender } = props;
   const src = `https://i.pravatar.cc/525?u=${email}`;
-  const placeholder = `/avatar_${gender.toLowerCase()}.png`;
+  const blurDataURL = `/avatar_${gender.toLowerCase()}.png`;
 
   return (
     <NextImage
       src={src}
-      blurDataURL={placeholder}
+      blurDataURL={blurDataURL}
       placeholder="blur"
       width={525}
       height={525}
@@ -57,6 +57,7 @@ function Card(props: CardProps) {
           <br />
           {surname}
         </h3>
+
         <span>{`${city}, ${state}`}</span>
         <p className={css.blurb}>{bio}</p>
 
