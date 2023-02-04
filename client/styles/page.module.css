@@ -1,0 +1,8 @@
+.root {
+  padding: 1rem;
+  min-height: 100vh;
+}
+
+.with_navbar {
+  padding-top: 4.5rem;
+}
