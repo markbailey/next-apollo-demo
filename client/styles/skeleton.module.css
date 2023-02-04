@@ -1,0 +1,105 @@
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.root {
+  isolation: isolate;
+  position: relative;
+  overflow: hidden;
+  border: 0.25rem solid var(--skeleton-color);
+  background-color: var(--skeleton-color);
+}
+
+.skeleton {
+  position: relative;
+  overflow: hidden;
+}
+
+.skeleton:after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background-image: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0,
+    rgba(255, 255, 255, 0.1) 20%,
+    rgba(255, 255, 255, 0.25) 60%,
+    rgba(255, 255, 255, 0)
+  );
+  animation: shimmer 1s ease-in-out infinite alternate;
+}
+
+.image {
+  z-index: 0;
+  max-width: 125%;
+  min-width: 100%;
+  height: auto;
+}
+
+.title {
+  width: 60%;
+  padding: 1rem;
+  background-color: var(--skeleton-color);
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  width: 35%;
+  padding: 0.5rem;
+  background-color: var(--skeleton-color);
+  margin-bottom: 1rem;
+}
+
+.blurb {
+  width: 100%;
+  padding: 0.5rem;
+  background-color: var(--skeleton-color);
+  margin-bottom: 0.5rem;
+}
+
+.blurb:last-of-type {
+  width: 75%;
+  margin-bottom: 0;
+}
+
+.icon {
+  content: '';
+  width: 2rem;
+  height: 2rem;
+  background-color: var(--skeleton-color);
+}
+
+.overlay {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+  padding: 1rem 1rem 0;
+  background-color: transparent;
+  background-position: 0% 0%;
+  background-size: auto auto;
+  background-repeat: repeat;
+  background-attachment: scroll;
+  background-origin: padding-box;
+  background-clip: border-box;
+  background-image: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0) 0%,
+    var(--o-bg) 65%
+  );
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  padding: 0.5rem 1rem 1rem;
+  margin: 1rem -1rem 0;
+  justify-content: center;
+  align-content: center;
+  gap: 1em;
+}
