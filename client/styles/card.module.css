@@ -83,10 +83,6 @@
   opacity: 1;
 }
 
-/* .root:hover .overlay {
-  --o-bg: #f2333b;
-} */
-
 .root:hover,
 .root:hover .link:not(:hover) {
   color: var(--card-text-hover);
