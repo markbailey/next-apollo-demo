@@ -1,6 +1,5 @@
 import React from 'react';
 import Link from 'next/link';
-import withApollo from '../lib/withApollo';
 import Name from '../components/Name';
 
 const Page = () => (
@@ -8,10 +7,10 @@ const Page = () => (
     Welcome, <Name />
     <br />
     <br />
-    <Link href="/about">
-      <a>About</a>
-    </Link>
+    <Link href="/about">About</Link>
+    {' | '}
+    <Link href="/contacts">Contacts</Link>
   </div>
 );
 
-export default withApollo({ ssr: true })(Page);
+export default Page;
