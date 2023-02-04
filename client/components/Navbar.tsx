@@ -5,7 +5,9 @@ import css from '../styles/navbar.module.css';
 function Navbar() {
   return (
     <header className={css.root}>
-      <Link href="/">Back Home</Link>
+      <Link href="/">
+        <a>Back Home</a>
+      </Link>
     </header>
   );
 }
