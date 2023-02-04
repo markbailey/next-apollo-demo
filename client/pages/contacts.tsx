@@ -43,17 +43,21 @@ export const query = (skip: number = 0) => gql`
 `;
 
 export async function getServerSideProps() {
-  const { data } = await client.query<Result>({
-    query: query()
-  });
+  const baseProps = { data: [], perPage: 20, total: 2000 };
+  try {
+    const { data } = await client.query<Result>({
+      query: query()
+    });
 
-  return {
-    props: {
-      data: data.contacts,
-      perPage: 20,
-      total: 2000
-    }
-  };
+    return {
+      props: {
+        ...baseProps,
+        data: data.contacts
+      }
+    };
+  } catch (error) {
+    return { props: baseProps };
+  }
 }
 
 function ContactsPage(props: ContactsPageProps) {
@@ -62,7 +66,7 @@ function ContactsPage(props: ContactsPageProps) {
   const [showSkeleton, setShowSkeleton] = useState(false);
   const [contacts, setContacts] = useState<Contact[]>(initialData);
   const { loading, data, error } = useQuery<Result>(query(skip), {
-    skip: skip === 0
+    skip: skip === 0 && initialData.length > 0
   });
   const className = classNames(css.root, css.with_navbar);
 
@@ -81,6 +85,27 @@ function ContactsPage(props: ContactsPageProps) {
   return (
     <div className={className}>
       <Navbar />
+      {mount(
+        error !== undefined,
+        <div
+          style={{
+            zIndex: 99,
+            position: 'sticky',
+            top: '4.3rem',
+            backgroundColor: '#f4424e',
+            color: '#333',
+            border: '0.25rem solid #333',
+            boxShadow: '0 0 10rem 1rem rgb(0 0 0)',
+            padding: 16
+          }}
+        >
+          <strong>Error!</strong>
+          <span>, we were unable to communicate with the API server.</span>
+          <br />
+          <small>{error?.message}</small>
+        </div>
+      )}
+
       <div className={gridStyles.root}>
         {mapToJSX(contacts, Card)}
         {mount(showSkeleton, mapToJSX([...new Array(perPage)], Skeleton))}
