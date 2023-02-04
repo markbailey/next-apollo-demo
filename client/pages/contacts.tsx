@@ -4,16 +4,15 @@ import client from '../client';
 import Card from '../components/Card';
 import mapToJSX from '../utilities/mapToJSX';
 import { mount } from '../utilities/show';
-import gridStyles from '../styles/grid.module.css';
+import classNames from '../utilities/classNames';
 import Skeleton from '../components/Skeleton';
 import Button from '../components/Button';
 import Navbar from '../components/Navbar';
-import css from '../styles/page.module.css';
-import classNames from '../utilities/classNames';
 import ScrollToTop from '../components/ScrollToTop';
-import withRenderClientSide from '../components/hoc/withRenderClientSide';
+import css from '../styles/page.module.css';
+import gridStyles from '../styles/grid.module.css';
 
-interface Result {
+export interface Result {
   contacts: Contact[];
 }
 
@@ -24,7 +23,7 @@ interface ContactsPageProps {
 }
 
 // GraphQL query
-const query = (skip: number = 0) => gql`
+export const query = (skip: number = 0) => gql`
   query Contacts {
     contacts(skip: ${skip}, first: 20) {
       full_name
@@ -62,8 +61,9 @@ function ContactsPage(props: ContactsPageProps) {
   const [skip, setSkip] = useState(0);
   const [showSkeleton, setShowSkeleton] = useState(false);
   const [contacts, setContacts] = useState<Contact[]>(initialData);
-  const { loading, data } = useQuery<Result>(query(skip), { skip: skip === 0 });
-
+  const { loading, data, error } = useQuery<Result>(query(skip), {
+    skip: skip === 0
+  });
   const className = classNames(css.root, css.with_navbar);
 
   useEffect(() => {
@@ -75,7 +75,8 @@ function ContactsPage(props: ContactsPageProps) {
 
   useEffect(() => {
     if (loading) setShowSkeleton(true);
-  }, [loading, setShowSkeleton]);
+    else if (error !== undefined) setShowSkeleton(false);
+  }, [loading, error, setShowSkeleton]);
 
   return (
     <div className={className}>
@@ -96,7 +97,7 @@ function ContactsPage(props: ContactsPageProps) {
         </Button>
       )}
 
-      {withRenderClientSide(<ScrollToTop offset={0} />)}
+      <ScrollToTop offset={0} />
     </div>
   );
 }
