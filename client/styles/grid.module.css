@@ -1,0 +1,31 @@
+.root {
+  --columns: 1fr;
+  --max-w: auto;
+  display: grid;
+  grid-template-columns: var(--columns);
+  gap: 1rem;
+  place-content: center;
+  margin: 0 auto;
+  max-width: var(--max-w);
+}
+
+/* MEDIA QUERIES */
+@media (min-width: 525px) {
+  .root {
+    --columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 992px) {
+  .root {
+    --columns: 1fr 1fr 1fr;
+    --max-w: 1024px;
+  }
+}
+
+@media (min-width: 1400px) {
+  .root {
+    --columns: 1fr 1fr 1fr 1fr;
+    --max-w: 1400px;
+  }
+}
