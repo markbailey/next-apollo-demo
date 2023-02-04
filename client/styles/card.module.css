@@ -1,0 +1,124 @@
+.root {
+  isolation: isolate;
+  position: relative;
+  overflow: hidden;
+  border: 0.25rem solid var(--card-border);
+  color: var(--card-text);
+  transition: box-shadow 0.2s ease-in-out, border-color 0.2s ease-in-out,
+    color 0.2s ease-in-out;
+}
+
+.overlay {
+  --o-bg: var(--card-bg);
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+  padding: 1rem 1rem 0;
+  background-color: transparent;
+  background-position: 0% 0%;
+  background-size: auto auto;
+  background-repeat: repeat;
+  background-attachment: scroll;
+  background-origin: padding-box;
+  background-clip: border-box;
+  background-image: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0) 0%,
+    var(--o-bg) 65%
+  );
+}
+
+.title {
+  --title-fs: 2rem;
+  text-transform: uppercase;
+  font-size: var(--title-fs);
+  line-height: var(--title-fs);
+  margin: 0px;
+}
+
+.footer {
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  padding: 0.5rem 1rem 1rem;
+  margin: 1rem -1rem 0;
+  justify-content: center;
+  align-content: center;
+  gap: 1em;
+}
+
+.image {
+  z-index: 0;
+  max-width: 125%;
+  min-width: 100%;
+  height: auto;
+  filter: grayscale(1);
+  opacity: 0.5;
+  transition: filter 0.2s ease-in-out, transform 0.2s ease-in-out,
+    opacity 0.2s ease-in-out;
+}
+
+.blurb {
+  margin: 1rem 0px 0px;
+  display: block;
+}
+
+.link {
+  color: var(--card-text);
+  display: grid;
+}
+
+/* Hover State */
+.root:hover {
+  box-shadow: 0 0 0.5rem 0.25rem rgb(0 0 0 / 25%);
+  border-color: var(--card-text-hover);
+}
+
+.root:hover > .image {
+  transform: scale(1.1);
+  filter: grayscale(0);
+  opacity: 1;
+}
+
+/* .root:hover .overlay {
+  --o-bg: #f2333b;
+} */
+
+.root:hover,
+.root:hover .link:not(:hover) {
+  color: var(--card-text-hover);
+}
+
+/* Media Queries */
+@media (min-width: 375px) {
+  .title {
+    --title-fs: 2.5rem;
+  }
+}
+
+@media (min-width: 525px) {
+  .title {
+    --title-fs: 1.75rem;
+  }
+}
+
+@media (min-width: 600px) {
+  .title {
+    --title-fs: 2rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .title {
+    --title-fs: 3rem;
+  }
+}
+
+@media (min-width: 992px) {
+  .title {
+    --title-fs: 2rem;
+  }
+}
