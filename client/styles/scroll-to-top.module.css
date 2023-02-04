@@ -1,11 +1,12 @@
 .root {
   position: fixed;
-  bottom: 1.25rem;
-  right: 1.25rem;
+  bottom: 1rem;
+  right: 1rem;
   z-index: 9999;
   padding: 0.5rem;
+  border: none !important;
 
-  transition: transform 0.3s ease;
+  transition: transform 0.2s ease;
   transform: translateY(calc(100% + 1.25rem));
 }
 
