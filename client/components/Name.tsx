@@ -1,27 +1,19 @@
 import React from 'react';
 import { gql, useQuery } from '@apollo/client';
 
-interface Results {
-  name?: {
-    firstName: string;
-    lastName: string;
-  };
+interface Result {
+  name?: string;
 }
 
 const query = gql`
   query name {
-    name {
-      firstName
-      lastName
-    }
+    name
   }
 `;
 
 function Name() {
-  const { loading, error, data } = useQuery<Results>(query);
-  const { firstName, lastName } = data?.name;
-  console.log(data);
-  return <span>{loading ? '..' : firstName}</span>;
+  const { loading, data } = useQuery<Result>(query);
+  return <span>{loading ? '..' : data?.name}</span>;
 }
 
 export default Name;
