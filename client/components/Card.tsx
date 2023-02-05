@@ -1,6 +1,7 @@
 import NextImage from 'next/image';
 import Link from 'next/link';
 import React, { HTMLAttributes, ImgHTMLAttributes } from 'react';
+import withoutProps from '../utilities/withoutProps';
 import EmailIcon from './icons/Email';
 import LocationIcon from './icons/Location';
 import PhoneIcon from './icons/Phone';
@@ -40,7 +41,7 @@ function Card(props: CardProps) {
     phone,
     bio,
     ...otherProps
-  } = props;
+  } = withoutProps(props, 'full_name', 'gender', 'country');
 
   const encodedAddress = encodeURIComponent(
     `${address},${city},${state},${zip}`
