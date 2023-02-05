@@ -5,7 +5,7 @@ interface Result {
   name?: string;
 }
 
-const query = gql`
+export const query = gql`
   query name {
     name
   }
