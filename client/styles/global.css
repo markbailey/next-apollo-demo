@@ -1,10 +1,10 @@
 :root {
   --bg: #f5f5f5;
   --text: #333333;
-  --card-bg: #02274d; /* #02274d #fe414d #f4424e */
-  --card-text: #333333;
-  --card-text-hover: #f5f5f5;
-  --card-br: #333333; /* #f2333b */
+  --card-bg: #02274d;
+  --card-text: var(--text);
+  --card-text-hover: var(--bg);
+  --card-br: var(--text);
   --btn-bg: var(--text);
   --btn-text: var(--bg);
   --btn-bg-hover: #f2333b;
