@@ -39,7 +39,7 @@ describe('GraphQL API', () => {
   it('Verify the contacts api can return 2000 records', async () => {
     const contacts = [];
 
-    for (let i = 1; i <= 100; i++) {
+    for (let i = 0; i < 100; i++) {
       const { data } = await server.executeOperation({
         query: contactsQuery()
       });
