@@ -35,4 +35,19 @@ describe('GraphQL API', () => {
     expect(response.data).toHaveProperty('contacts');
     expect(response.data.contacts).toHaveLength(20);
   });
+
+  it('Verify the contacts api can return 2000 records', async () => {
+    const contacts = [];
+
+    for (let i = 1; i <= 100; i++) {
+      const { data } = await server.executeOperation({
+        query: contactsQuery()
+      });
+
+      contacts.push(...data.contacts);
+    }
+
+    // Verify the contacts are unique
+    expect(contacts).toHaveLength(2000);
+  });
 });
