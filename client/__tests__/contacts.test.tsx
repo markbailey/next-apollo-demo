@@ -50,6 +50,9 @@ describe('Contacts page component', () => {
     );
 
     const cards = container.querySelectorAll('[data-card]');
+    const button = container.querySelector('button');
+
     expect(cards).toHaveLength(data.length);
+    expect(button).toBeInTheDocument();
   });
 });
