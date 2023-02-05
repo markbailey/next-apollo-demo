@@ -3,20 +3,30 @@
   position: relative;
   display: grid;
   overflow: hidden;
-  border: 0.25rem solid var(--card-border);
+  border: 0.25rem solid var(--card-br);
   color: var(--card-text);
   transition: box-shadow 0.2s ease-in-out, border-color 0.2s ease-in-out,
     color 0.2s ease-in-out;
 }
 
 .overlay {
-  --o-bg: var(--card-bg);
+  --o-bg-hover: var(--card-bg);
+  --o-bg: var(--bg);
+  isolation: isolate;
   position: absolute;
   left: 0;
   right: 0;
   bottom: 0;
   z-index: 10;
   padding: 1rem 1rem 0;
+}
+
+.overlay::before,
+.overlay::after {
+  z-index: -1;
+  position: absolute;
+  inset: 0;
+  content: '';
   background-color: transparent;
   background-position: 0% 0%;
   background-size: auto auto;
@@ -29,6 +39,17 @@
     rgba(255, 255, 255, 0) 0%,
     var(--o-bg) 65%
   );
+  opacity: 1;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.overlay::after {
+  background-image: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0) 0%,
+    var(--o-bg-hover) 65%
+  );
+  opacity: 0;
 }
 
 .title {
@@ -81,6 +102,14 @@
 .root:hover > .image {
   transform: scale(1.1);
   filter: grayscale(0);
+  opacity: 1;
+}
+
+.root:hover .overlay::before {
+  opacity: 0;
+}
+
+.root:hover .overlay::after {
   opacity: 1;
 }
 
