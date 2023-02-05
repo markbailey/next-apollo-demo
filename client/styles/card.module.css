@@ -21,8 +21,7 @@
   padding: 1rem 1rem 0;
 }
 
-.overlay::before,
-.overlay::after {
+.overlay::before {
   z-index: -1;
   position: absolute;
   inset: 0;
@@ -37,19 +36,10 @@
   background-image: linear-gradient(
     180deg,
     rgba(255, 255, 255, 0) 0%,
-    var(--o-bg) 65%
-  );
-  opacity: 1;
-  transition: opacity 0.2s ease-in-out;
-}
-
-.overlay::after {
-  background-image: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0) 0%,
     var(--o-bg-hover) 65%
   );
   opacity: 0;
+  transition: opacity 0.2s ease-in-out;
 }
 
 .title {
@@ -110,10 +100,6 @@
 }
 
 .root:hover .overlay::before {
-  opacity: 0;
-}
-
-.root:hover .overlay::after {
   opacity: 1;
 }
 
