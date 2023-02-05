@@ -69,6 +69,7 @@ function ContactsPage(props: ContactsPageProps) {
     skip: skip === 0 && initialData.length > 0
   });
   const className = classNames(css.root, css.with_navbar);
+  const showNoResults = contacts.length === 0 && !loading && !showSkeleton;
 
   useEffect(() => {
     if (data !== undefined) {
@@ -95,7 +96,7 @@ function ContactsPage(props: ContactsPageProps) {
         </div>
       )}
 
-      {mount(contacts.length === 0, <h1>No contacts found</h1>)}
+      {mount(showNoResults, <h1>No contacts found</h1>)}
 
       <div className={gridStyles.root}>
         {mapToJSX(contacts, Card)}
