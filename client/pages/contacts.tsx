@@ -84,21 +84,10 @@ function ContactsPage(props: ContactsPageProps) {
 
   return (
     <div className={className}>
-      <Navbar />
+      <Navbar title="Contacts" />
       {mount(
         error !== undefined,
-        <div
-          style={{
-            zIndex: 99,
-            position: 'sticky',
-            top: '4.3rem',
-            backgroundColor: '#f4424e',
-            color: '#333',
-            border: '0.25rem solid #333',
-            boxShadow: '0 0 10rem 1rem rgb(0 0 0)',
-            padding: 16
-          }}
-        >
+        <div className="error_message">
           <strong>Error!</strong>
           <span>, we were unable to communicate with the API server.</span>
           <br />
