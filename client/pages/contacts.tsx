@@ -95,6 +95,8 @@ function ContactsPage(props: ContactsPageProps) {
         </div>
       )}
 
+      {mount(contacts.length === 0, <h1>No contacts found</h1>)}
+
       <div className={gridStyles.root}>
         {mapToJSX(contacts, Card)}
         {mount(showSkeleton, mapToJSX([...new Array(perPage)], Skeleton))}
@@ -105,7 +107,7 @@ function ContactsPage(props: ContactsPageProps) {
         <Button
           onClick={() => setSkip((state) => state + perPage)}
           disabled={loading}
-          style={{ margin: '1rem auto 0', display: 'block' }}
+          className="load_more_btn"
         >
           {loading ? 'Loading...' : 'Load more'}
         </Button>

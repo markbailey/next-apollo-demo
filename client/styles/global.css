@@ -16,6 +16,7 @@
 ::before,
 ::after {
   box-sizing: border-box;
+  margin: 0;
 }
 
 html,
@@ -33,6 +34,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background: var(--bg);
   color: var(--text);
+}
+
+.load_more_btn {
+  display: block;
+  margin: 1rem auto 0;
 }
 
 .error_message {
