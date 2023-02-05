@@ -34,6 +34,20 @@ describe('GraphQL API', () => {
     expect(response).toHaveProperty('data');
     expect(response.data).toHaveProperty('contacts');
     expect(response.data.contacts).toHaveLength(20);
+
+    // Verify the contacts have the correct properties
+    expect(response.data.contacts[0]).toHaveProperty('full_name');
+    expect(response.data.contacts[0]).toHaveProperty('forename');
+    expect(response.data.contacts[0]).toHaveProperty('surname');
+    expect(response.data.contacts[0]).toHaveProperty('gender');
+    expect(response.data.contacts[0]).toHaveProperty('email');
+    expect(response.data.contacts[0]).toHaveProperty('phone');
+    expect(response.data.contacts[0]).toHaveProperty('address');
+    expect(response.data.contacts[0]).toHaveProperty('city');
+    expect(response.data.contacts[0]).toHaveProperty('state');
+    expect(response.data.contacts[0]).toHaveProperty('zip');
+    expect(response.data.contacts[0]).toHaveProperty('country');
+    expect(response.data.contacts[0]).toHaveProperty('bio');
   });
 
   it('Verify the contacts api can return 2000 records', async () => {
