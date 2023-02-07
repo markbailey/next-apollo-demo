@@ -10,7 +10,7 @@ function Skeleton() {
   return (
     <div className={getClassNames(css.root)}>
       <NextImage
-        src="/skeleton-bg.png"
+        src="/pixel.png"
         width={525}
         height={525}
         loading="lazy"
