@@ -11,6 +11,7 @@ import Navbar from '../components/Navbar';
 import ScrollToTop from '../components/ScrollToTop';
 import css from '../styles/page.module.css';
 import gridStyles from '../styles/grid.module.css';
+import InfiniteScroll from '../components/InfiniteScroll';
 
 export interface Result {
   contacts: Contact[];
@@ -105,13 +106,9 @@ function ContactsPage(props: ContactsPageProps) {
 
       {mount(
         contacts.length < total,
-        <Button
-          onClick={() => setSkip((state) => state + perPage)}
-          disabled={loading}
-          className="load_more_btn"
-        >
-          {loading ? 'Loading...' : 'Load more'}
-        </Button>
+        <InfiniteScroll
+          onTriggered={() => setSkip((state) => state + perPage)}
+        />
       )}
 
       <ScrollToTop offset={0} />
